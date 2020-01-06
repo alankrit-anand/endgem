@@ -335,13 +335,14 @@ app.post("/download/:id", (req, res)=>{
 				console.log(err);
 			else{
 
-				(async () => {
+				/*(async () => {
 
 				    await open("https://drive.google.com/uc?id="+document.drive_id+"&export=download");
 				 
-				})();
+				})();*/
 
-				res.redirect("back");
+				res.redirect("https://drive.google.com/uc?id="+document.drive_id+"&export=download");
+				
 				
 			}
 		});
