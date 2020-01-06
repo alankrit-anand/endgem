@@ -23,7 +23,7 @@ const TOKEN_PATH = 'token.json';
 //================================================================================ 
 //"mongodb://localhost:27017/endgem"
 
-mongoose.connect(process.env.DATABASEURL, {
+mongoose.connect("mongodb://localhost:27017/endgem", {
 	useNewUrlParser: true, 
 	useUnifiedTopology: true
 });
@@ -334,10 +334,13 @@ app.post("/download/:id", (req, res)=>{
 			if(err)
 				console.log(err);
 			else{
-				open("https://drive.google.com/uc?id="+document.drive_id+"&export=download", (err)=>{
-					if(err)
-						console.log(err);
-				});
+
+				(async () => {
+
+				    await open("https://drive.google.com/uc?id="+document.drive_id+"&export=download");
+				 
+				})();
+				
 				res.redirect("back");
 				
 			}
@@ -470,7 +473,7 @@ function authorize(credentials, callback) {
 
 //===============================================================================
 
-app.listen(process.env.PORT, process.env.IP, ()=>{
+app.listen(3000, process.env.IP, ()=>{
 	console.log("Server started...");
 }) 
 
