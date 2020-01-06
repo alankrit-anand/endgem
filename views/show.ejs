@@ -1,0 +1,51 @@
+<%- include("partials/header", {documents: documents, i:i}) %>
+
+
+
+<div class="container">
+
+
+	<div class="jumbotron">
+		<h1><%=document.name%></h1>
+	</div>
+	
+	<div >
+		<p id="pdf-show-div" style="margin-top:40px">
+			<i class="far fa-file-pdf center" id="pdf-show"></i>
+		</p>
+		<p id="pdf-show-div">
+			
+		</p>
+
+		<div class="row">
+			<form style="margin-left: 47%; margin-top: 40px" class="download-form" action="/download/<%=document._id%>" method="POST">
+				<button class="btn-link-download"><i class="fas fa-download"></i></a></span></button>
+			</form>
+
+		</div>
+
+		<h4 style="text-align:center; margin-top: 30px">Number of Downloads: <%=document.downloads%> || Uploaded by: <%=document.owner%></h4>
+
+		<% if(currentUser && document.owner===currentUser.username){%>
+		<div class="row" style="margin-top:60px">
+			<a style="margin-left:40%" class="center btn btn-warning" href="/documents/<%=document._id%>/edit" >Edit</a>
+			<form  style="margin-left:10%" class="download-form" action="/documents/<%=document._id%>?_method=DELETE" method="POST">
+				<button class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this item?')">Delete</button>
+			</form>
+		</div>
+		<%}%>
+		<!-- <p id="pdf-show-div">
+			
+		</p> -->
+		
+		
+		
+	</div> 
+
+	
+	
+</div>
+
+<script >console.log(<%=i%>)</script>
+
+<%- include("partials/footer") %>

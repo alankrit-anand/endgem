@@ -1,0 +1,205 @@
+html{
+	min-height:100%;
+}
+
+#icon{
+	width:40px;
+	margin:0 10px;
+}
+
+#icon-link{
+	margin-top:10px;
+	padding: 0 5px;
+}
+
+/* Style the tab */
+.tab {
+  overflow: hidden;
+  border: 1px solid #ccc;
+  background-color: #f1f1f1;
+}
+
+/* Style the buttons that are used to open the tab content */
+.tab button {
+  background-color: inherit;
+  float: left;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 14px 16px;
+  transition: 0.3s;
+}
+
+/* Change background color of buttons on hover */
+.tab button:hover {
+  background-color: #ddd;
+}
+
+/* Create an active/current tablink class */
+.tab button.active {
+  background-color: #ccc;
+}
+
+/* Style the tab content */
+.tabcontent {
+  display: none;
+  padding: 6px 12px;
+  border: 1px solid #ccc;
+  border-top: none;
+}
+
+#course1{
+	display: block;
+}
+
+.navbar{
+	padding: 0.5rem 2rem;
+}
+
+a.nav-link{
+	margin:0;
+}
+
+.navbar-expand-lg .navbar-nav .nav-link {
+    padding-right: .8rem;
+    padding-left: .8rem;
+}
+
+div.container:first-of-type{
+	margin-top: 30px;
+	margin-bottom: 30px;
+}
+
+div.container:child(2){
+	border: 0;
+}
+
+.tabcontent{
+	border: 0;
+}
+
+div.tabcontent ul.list-group li.list-group-item{
+	background-color: white;
+	height: 60px;
+	text-align: justify;
+	line-height: 40px;
+	color: #060606;
+}
+
+div#top-gem ul.list-group li.list-group-item{
+	height: 60px;
+	line-height: 60px;
+	background-color: #2b2b2b;
+	color: #f7f7f7;
+}
+
+div.tabcontent ul.list-group li.list-group-item:nth-child(2n){
+	background-color: #f7f7f7;
+}
+
+
+li i{
+	font-size: 2rem;
+	margin: 0 15px 0 5px;
+	color: #ea371e;
+}
+
+i.fa-download{
+	color: #2dd640;
+}
+
+i.fa-chart-bar{
+	color: orange; 
+}
+
+li span.list-right{
+	float:right;
+}
+
+li span.list-center{
+	margin-left: 20px;
+	font-size: 0.85em
+}
+
+li span.list-left{
+	float: left;
+	width: 300px;
+}
+
+div.container h1{
+	text-align: center;
+}
+
+.form{
+	width: 30%;
+	margin: 30px auto;
+}
+
+#top-gem{
+	max-width:540px;
+	width: 60%;
+	height: 400px;
+	position: absolute;
+	top: 68px;
+	right: 0;
+	z-index: 1;
+}
+
+.top-gem{
+   display:none;
+}
+
+#top-gem-heading{
+	width:100%;
+	padding:0;
+	margin:0;
+	text-align: center;
+}
+
+/*==========================================================================================================================================
+*/
+
+.btn-link-download {
+    border: none;
+    outline: none;
+    background: none;
+    cursor: pointer;
+    color: #0000EE;
+    padding: 0;
+    text-decoration: underline;
+    font-family: inherit;
+    font-size: inherit;
+}
+
+.download-form{
+	display: inline;
+}
+
+#pdf-show{
+	color:red;
+	font-size: 4rem;
+	margin:10 auto;
+} 
+
+
+
+#pdf-show-div{
+	text-align: center;
+}
+
+#delete-form{
+	display:inline;
+}
+
+div.row i.fa-download{
+	font-size: 4rem;
+}
+
+.central{
+	margin: 20 auto;
+}
+
+.fa-chevron-right, .fa-chevron-left{
+	margin:8px 12px;
+	color: #232323;
+}

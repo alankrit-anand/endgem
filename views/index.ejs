@@ -1,0 +1,81 @@
+<%- include("partials/header", {documents: documents, i:i}) %>
+
+
+<div class="container">
+	<ul class="nav nav-tabs nav-justified">
+
+		<% if(i>3){ %>
+		<li><a href="/index/<%=(Math.floor(i/4)-1)*4%>"><i class="fa fa-chevron-left" aria-hidden="true"></i></a></li>
+		<% } %>
+
+		 <% courses.forEach((course, index)=>{ %> 
+
+		 	<% if(index >= Math.floor(i/4)*4 && index < (Math.floor(i/4)+1)*4 ){ %>
+
+				<li class="nav-item" > 
+					<a class="nav-link" href="/index/<%=index%>"><%= course.name %></a>
+				</li>
+
+			<% } %>
+
+
+		<% }); %>
+
+		<% if( courses[(Math.floor(i/4)+1)*4] ){ %>
+		<li><a href="/index/<%=(Math.floor(i/4)+1)*4%>"><i class="fa fa-chevron-right" aria-hidden="true"></i></a></li>
+		<% } %>
+		
+	</ul>
+	
+</div>
+
+
+<div class="container">
+
+	<% courses.forEach((course, index)=>{ %>
+
+		<% if(index === i){ %>
+
+		
+
+			<div id="<%=course.name%>" class="tabcontent">
+				<ul class="list-group list-group-flush">
+					<% course.documents.forEach((document)=>{ %>
+						<% if(document){ %>
+							<li class="list-group-item">
+								<a href="/documents/<%=document._id%>">
+									<span class="list-left"><i class="far fa-file-pdf"></i><%= document.name%></span> 
+								</a>
+								
+								<span class="list-center"><em>( Uploaded on: <%= document.uploadDate%> )</em></span>
+								<span class="list-right">Total Downloads: <%= document.downloads%>
+									<!-- <a target="_blank" download href="https://drive.google.com/uc?id=<%=document.drive_id%>&export=download"> -->
+										<form class="download-form" action="/download/<%=document._id%>" method="POST">
+											<button class="btn-link-download"><i class="fas fa-download"></i></button>
+										</form>
+									<!-- </a> -->
+									
+								</span>
+									
+							</li>
+							<%}%>
+					<% }); %>	
+				</ul>
+			</div>
+
+		<%}%>
+
+		
+
+	<% }); %> 
+
+</div>
+
+
+<script>
+	document.querySelectorAll(".nav-tabs li a.nav-link")[<%=i%4%>].classList.add("active");
+	document.querySelector("div.tabcontent").style.display = "block";
+</script>
+
+
+<%- include("partials/footer") %>

@@ -1,0 +1,25 @@
+<%- include("partials/header", {documents: documents, i:0}) %>
+
+<div class="container">
+	<h1>Add Course</h1>
+	<div class="form">
+		<form action="/courses" method="POST">
+			<div class="form-group">
+				<input class="form-control" type="text" name="course[name]" placeholder="Course name">
+			</div>
+			<div class="form-group">
+				<input class="form-control" type="text" name="course[description]" placeholder="Description">
+			</div>
+			<div class="form-group">
+				<input class="form-control" type="number" name="course[semester]" placeholder="Semester" min="1" max="8" step="1">
+			</div>
+			<div class="form-group">
+				<input class="btn btn-lg btn-primary btn-block" type="submit">
+			</div>	
+		</form>
+		<a href="/index">Go Back</a>
+	</div>
+	
+</div>
+
+<%- include("partials/footer") %>
