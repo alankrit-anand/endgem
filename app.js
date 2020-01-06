@@ -4,6 +4,7 @@ bodyParser          = require("body-parser"),
 mongoose            = require("mongoose"),
 methodOverride      = require("method-override"),
 passport            = require("passport"),
+flash               = require("connect-flash"),
 LocalStrategy       = require("passport-local"),
 middlewareObj       = require("./middleware"),
 User                = require("./models/user"),
@@ -33,6 +34,7 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static(__dirname+"/public"));
 app.set("view engine", "ejs");
 app.use(methodOverride("_method"));
+app.use(flash());
 
  
 var upload = multer();
@@ -52,7 +54,9 @@ passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
 app.use((req, res, next)=>{
-	res.locals.currentUser = req.user; 
+	res.locals.currentUser = req.user;
+	res.locals.success = req.flash("success");
+	res.locals.error = req.flash("error");
 	next();
 });
 
@@ -99,7 +103,7 @@ app.get("/index/:i", (req, res)=>{
 });
 
 
-app.get("/new/:i", (req, res)=>{
+app.get("/new/:i",middlewareObj.isLoggedIn, (req, res)=>{
 
 	
 	Document.find({}, (err, documents)=>{
@@ -155,7 +159,7 @@ app.get("/signup", (req, res)=>{
 
 });
 
-app.get("/courses/new", (req, res)=>{
+app.get("/courses/new",middlewareObj.isLoggedIn, (req, res)=>{
 
 	Document.find({}, (err, documents)=>{
 		documents.sort((a, b)=>{
@@ -294,6 +298,7 @@ app.post("/documents",middlewareObj.isLoggedIn, upload.single('file'), (req, res
 							});
 							user.documents.push(document);
 							user.save();
+							req.flash("success", "File uploaded successfully");
 							res.redirect("/index/"+i);
 						});
 						
@@ -320,8 +325,10 @@ app.post("/courses", middlewareObj.isLoggedIn, (req, res)=>{
 	Course.create(course, (err, course)=>{
 		if(err)
 			console.log(err);
-		else
+		else{
+			req.flash("success", "Course created successfully");
 			res.redirect("/index/0");
+		}
 	});
 });
 
@@ -334,12 +341,6 @@ app.post("/download/:id", (req, res)=>{
 			if(err)
 				console.log(err);
 			else{
-
-				/*(async () => {
-
-				    await open("https://drive.google.com/uc?id="+document.drive_id+"&export=download");
-				 
-				})();*/
 
 				res.redirect("https://drive.google.com/uc?id="+document.drive_id+"&export=download");
 				
@@ -356,9 +357,10 @@ app.post("/download/:id", (req, res)=>{
 app.post("/register", (req, res)=>{
 	User.register(new User({username: req.body.username}), req.body.password, (err, user)=>{
 		if(err){
-			return res.render("register");
+			return res.redirect("back");
 		}
 		passport.authenticate("local")(req, res, ()=>{
+			req.flash("success", "Signed Up successfully");
 			res.redirect("/index/0");
 		});
 	});
@@ -369,11 +371,12 @@ app.post("/login", passport.authenticate("local",
 	successRedirect: "/index/0",
 	failureRedirect: "/login"
 }), (req, res)=>{
-
+	
 });
 
 app.get("/logout", (req, res)=>{
 	req.logout();
+	req.flash("success", "Logged you out successfully");
 	res.redirect("/index/0");
 });
 
@@ -383,6 +386,7 @@ app.put("/documents/:id", middlewareObj.checkDocumentOwnership, (req, res)=>{
 	Document.findById(req.params.id, (err, document)=>{
 		document.name = req.body.document.name;
 		document.save();
+		req.flash("success", "Document updated successfully");
 		res.redirect("/documents/"+req.params.id);
 	});
 });
@@ -408,8 +412,10 @@ app.delete("/documents/:id", middlewareObj.checkDocumentOwnership, (req, res)=>{
 					Document.findByIdAndDelete(req.params.id, (err)=>{
 						if(err)
 							console.log(err);
-						else
+						else{
+							req.flash("success", "Document deleted successfully");
 							res.redirect("/index/0");
+						}
 					});
 
 				});

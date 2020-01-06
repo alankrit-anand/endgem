@@ -6,7 +6,7 @@ var middlewareObj = {};
 middlewareObj.isLoggedIn = (req, res, next)=>{
 	if(req.isAuthenticated())
 		return next();
-
+	req.flash("error", "You need to login first...")
 	res.redirect("/login");
 
 }
@@ -20,6 +20,7 @@ middlewareObj.checkDocumentOwnership = (req, res, next)=>{
 			if(req.user && document.owner === req.user.username)
 				next();
 			else{
+				req.flash("error", "You don't have permissions to do it");
 				res.redirect("back");
 			}
 		}

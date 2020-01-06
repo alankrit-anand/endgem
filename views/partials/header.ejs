@@ -4,6 +4,7 @@
 <html>
 <head>
 	<title>EndGem</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 	<link rel="stylesheet" type="text/css" href="/stylesheets/main.css">
 	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
@@ -13,14 +14,16 @@
 <body>
 
 	<%function nameGenerator(document){
-	 if(document.name.length>20){ 
-		 var doc_name = document.name.substring(0,20) ;
-	} 
-	else{
-		var doc_name = document.name 
-	}
-	return doc_name;
-}%>
+		 if(document.name.length>20){ 
+			 var doc_name = document.name.substring(0,20) ;
+		} 
+		else{
+			var doc_name = document.name 
+		}
+		return doc_name;
+	}%>
+
+	<%if(!i) var i =0%>
 
 	
 
@@ -37,8 +40,8 @@
 			<span class="navbar-toggler-icon"></span>
 		</button>
 
-		<div class="collapse navbar-collapse" id="navbarNav">
-			<ul class="navbar-nav">
+		<div class="collapse navbar-collapse" id="navbarSupportedContent">
+			<ul class="navbar-nav mr-auto">
 				<li class="nav-item active">
 					<a class="nav-link" href="/index/0">Home <span class="sr-only">(current)</span></a>
 				</li>
@@ -48,6 +51,10 @@
 
 				<li class="nav-item active">
 					<a class="nav-link" href="#"><i class="far fa-chart-bar"></i><span class="sr-only">(current)</span></a>
+				</li>
+
+				<li class="nav-item active">
+					<a class="nav-link" href="/new/<%=i%>"><i class="fas fa-plus"></i><span class="sr-only">(current)</span></a>
 				</li>
 
 				<% if(!currentUser){ %>
@@ -60,9 +67,6 @@
 				<% } %>
 
 				<% if(currentUser){ %>
-				<li class="nav-item active">
-					<a class="nav-link" href="/new/<%=i%>"><i class="fas fa-plus"></i><span class="sr-only">(current)</span></a>
-				</li>
 			
 				<li class="nav-item active">
 					<a class="nav-link" href="#">Logged In As <%=currentUser.username%> <span class="sr-only">(current)</span></a>
@@ -78,30 +82,48 @@
 	</nav>
 
 	<div class="top-gem" id="top-gem">
-		<ul class="list-group list-group-flush">
-			<li class="list-group-item" id="top-gem-heading">
-				Top Gems 
-			</li>
+	
+			<div class="row" id="top-gem-heading">
+				<div class="col-md-12">
+					Top Gems
+				</div>
+				 
+			</div>
 
 
 				<% documents.forEach((document, index)=>{ %>
 				<% if(index<10){ %>
-					<li class="list-group-item">
-						<i class="far fa-file-pdf"></i>
-						<span style="width:200px"><%= nameGenerator(document) %> - (Course: <%=document.course%>)</span>
 
-						  
-						<span class="list-right"> 
-							<form class="download-form" action="/download/<%=document._id%>" method="POST">
-								<button class="btn-link-download"><i class="fas fa-download"></i></a></span></button>
-							</form>
-							<%=document.downloads%>
-						</span>
-					</li>
+
+					<div class="row">
+								<div class="col-md-4 col-sm-6">
+									<a id="top-gem-a" href="/documents/<%=document._id%>">
+										<span class="list-left"><i class="far fa-file-pdf"></i><%= document.name%></span> 
+									</a>
+								</div>
+								<div class="col-md-4 d-none d-md-block" >
+									<em>Course: <%=document.course%></em>
+								</div>
+								<div class="col-md-4 col-sm-6" >
+									<form class="download-form" action="/download/<%=document._id%>" method="POST">
+										<button class="btn-link-download"><i class="fas fa-download"></i></a></span></button>
+									</form>
+									<%=document.downloads%>
+								</div>
+							</div>
 				<% } %>
 				<% }) %> 
 			
-		</ul>
+	
+	</div>
+
+	<div class="container">
+		<% if(error && error.length>0){ %>
+			<div class="alert alert-danger"><%= error %></div>
+		<% } %>
+		<% if(success && success.length>0){ %>
+			<div class="alert alert-success"><%= success %></div>
+		<% } %>
 	</div>
 
 	

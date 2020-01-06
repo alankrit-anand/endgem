@@ -10,12 +10,19 @@
 	</div>
 	
 	<div >
-		<p id="pdf-show-div" style="margin-top:40px">
-			<i class="far fa-file-pdf center" id="pdf-show"></i>
-		</p>
-		<p id="pdf-show-div">
-			
-		</p>
+		<a href="https://drive.google.com/uc?id=<%=document.drive_id%>">
+			<div class="row" id="pdf-show-div" style="margin-top:25px">
+				<div class="col-md-12">
+					<i class="far fa-file-pdf center" id="pdf-show"></i>
+				</div>		
+			</div>
+			<div class="row" style="margin-top:5px">
+				<div class="col-md-12">
+					Read Online
+				</div>		
+			</div>
+		</a>
+		
 
 		<div class="row">
 			<form style="margin-left: 47%; margin-top: 40px" class="download-form" action="/download/<%=document._id%>" method="POST">
@@ -24,7 +31,18 @@
 
 		</div>
 
-		<h4 style="text-align:center; margin-top: 30px">Number of Downloads: <%=document.downloads%> || Uploaded by: <%=document.owner%></h4>
+		<div class="row" style="margin-top: 10px">
+			<div class="col-md-12">
+				Number of Downloads: <%=document.downloads%>
+			</div>
+		</div>
+		<div class="col-md-12">
+			<div class="col-md-12">
+				Uploaded by: <%=document.owner%>
+			</div>
+		</div>
+
+		
 
 		<% if(currentUser && document.owner===currentUser.username){%>
 		<div class="row" style="margin-top:60px">
@@ -34,9 +52,7 @@
 			</form>
 		</div>
 		<%}%>
-		<!-- <p id="pdf-show-div">
-			
-		</p> -->
+		
 		
 		
 		

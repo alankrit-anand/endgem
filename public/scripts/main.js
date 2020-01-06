@@ -11,12 +11,7 @@ $("html").on("click", (event)=>{
 
 
 
-/*function tabmanipulate(num, id){
-  $("div.tabcontent").hide();
-  $(".nav-tabs li a").removeClass("active");
-  $("#"+id).show();
-  $("#"+"course"+num).addClass("active");
-}*/
+
 
 
 

@@ -12,14 +12,14 @@ html{
 	padding: 0 5px;
 }
 
-/* Style the tab */
+
 .tab {
   overflow: hidden;
   border: 1px solid #ccc;
   background-color: #f1f1f1;
 }
 
-/* Style the buttons that are used to open the tab content */
+
 .tab button {
   background-color: inherit;
   float: left;
@@ -30,17 +30,17 @@ html{
   transition: 0.3s;
 }
 
-/* Change background color of buttons on hover */
+
 .tab button:hover {
   background-color: #ddd;
 }
 
-/* Create an active/current tablink class */
+
 .tab button.active {
   background-color: #ccc;
 }
 
-/* Style the tab content */
+
 .tabcontent {
   display: none;
   padding: 6px 12px;
@@ -78,23 +78,65 @@ div.container:child(2){
 	border: 0;
 }
 
-div.tabcontent ul.list-group li.list-group-item{
-	background-color: white;
-	height: 60px;
-	text-align: justify;
-	line-height: 40px;
-	color: #060606;
-}
 
-div#top-gem ul.list-group li.list-group-item{
+div#top-gem div.row {
 	height: 60px;
 	line-height: 60px;
 	background-color: #2b2b2b;
 	color: #f7f7f7;
+	margin-left:0;
 }
 
-div.tabcontent ul.list-group li.list-group-item:nth-child(2n){
+div#top-gem div.row i.fa-download{
+	font-size: 2rem;
+}
+
+#top-gem-a{
+	color: #f7f7f7;
+}
+
+
+
+div.tabcontent div.row:nth-child(1){
+	margin-top: 25px;
+}
+
+div.tabcontent div.row div:nth-child(1){
+	padding-left:50px;
+}
+
+div.tabcontent div.row div:nth-child(3), #top-gem div.row div:nth-child(3){
+	text-align: right;
+	padding-right: 50px;
+}
+
+div.tabcontent div.row div:nth-child(2), #top-gem div.row div:nth-child(2){
+	text-align: center;
+}
+
+div.tabcontent div.row{
+	background-color: white;
+	height: 60px;
+	text-align: justify;
+	line-height: 60px;
+	color: #060606;
+	border-bottom: 0.8px solid #d0d0d0;
+	padding-top: 5px;
+}
+
+div.tabcontent div.row:nth-child(2n){
 	background-color: #f7f7f7;
+}
+
+div.tabcontent div.row i, div#top-gem div.row a i{
+	font-size: 2rem;
+	margin: 0 15px 0 5px;
+	color: #ea371e;
+}
+
+div.tabcontent div.row .fa-download{
+	color: #2dd640;
+	width:20px;
 }
 
 
@@ -104,8 +146,9 @@ li i{
 	color: #ea371e;
 }
 
+
 i.fa-download{
-	color: #2dd640;
+	color:#2dd640;
 }
 
 i.fa-chart-bar{
@@ -118,7 +161,7 @@ li span.list-right{
 
 li span.list-center{
 	margin-left: 20px;
-	font-size: 0.85em
+	font-size: 0.85em;
 }
 
 li span.list-left{
@@ -131,7 +174,8 @@ div.container h1{
 }
 
 .form{
-	width: 30%;
+	width: 60%;
+	max-width:320px;
 	margin: 30px auto;
 }
 
@@ -203,3 +247,20 @@ div.row i.fa-download{
 	margin:8px 12px;
 	color: #232323;
 }
+
+.alert{
+	text-align: center;
+}
+
+.navbar .navbar-collapse {
+  text-align: center;
+}
+
+
+.col-md-12{
+	text-align: center;
+	font-size: 1.5rem;
+	font-weight: 500;
+	margin-top: 10px;
+}
+

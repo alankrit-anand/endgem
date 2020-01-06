@@ -1,7 +1,7 @@
 <%- include("partials/header", {documents: documents, i:i}) %>
 
 
-<div class="container">
+<div class="container-fluid">
 	<ul class="nav nav-tabs nav-justified">
 
 		<% if(i>3){ %>
@@ -30,7 +30,7 @@
 </div>
 
 
-<div class="container">
+<div class="container-fluid">
 
 	<% courses.forEach((course, index)=>{ %>
 
@@ -42,22 +42,42 @@
 				<ul class="list-group list-group-flush">
 					<% course.documents.forEach((document)=>{ %>
 						<% if(document){ %>
-							<li class="list-group-item">
-								<a href="/documents/<%=document._id%>">
-									<span class="list-left"><i class="far fa-file-pdf"></i><%= document.name%></span> 
-								</a>
-								
-								<span class="list-center"><em>( Uploaded on: <%= document.uploadDate%> )</em></span>
-								<span class="list-right">Total Downloads: <%= document.downloads%>
-									<!-- <a target="_blank" download href="https://drive.google.com/uc?id=<%=document.drive_id%>&export=download"> -->
+
+							<div class="row">
+								<div class="col-md-4 col-sm-6">
+									<a  href="/documents/<%=document._id%>">
+										<span class="list-left"><i class="far fa-file-pdf"></i><%= document.name%></span> 
+									</a>
+								</div>
+								<div class="col-md-4 d-none d-md-block" >
+									<em>( Uploaded on: <%= document.uploadDate%> )</em>
+								</div>
+								<div class="col-md-4 col-sm-6" >
+									Total Downloads: <%= document.downloads%>
+									
 										<form class="download-form" action="/download/<%=document._id%>" method="POST">
 											<button class="btn-link-download"><i class="fas fa-download"></i></button>
 										</form>
-									<!-- </a> -->
+								</div>
+							</div>
+
+
+							<!-- <li class="list-group-item">
+								<a href="/documents/<%#document._id%>">
+									<span class="list-left"><i class="far fa-file-pdf"></i><%# document.name%></span> 
+								</a>
+								
+								<span class="list-center hidden-sm"><em>( Uploaded on: <%# document.uploadDate%> )</em></span>
+								<span class="list-right">Total Downloads: <%# document.downloads%>
+									
+										<form class="download-form" action="/download/<%#document._id%>" method="POST">
+											<button class="btn-link-download"><i class="fas fa-download"></i></button>
+										</form>
+									
 									
 								</span>
 									
-							</li>
+							</li> -->
 							<%}%>
 					<% }); %>	
 				</ul>
