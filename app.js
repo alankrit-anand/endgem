@@ -21,8 +21,9 @@ const TOKEN_PATH = 'token.json';
 
 
 //================================================================================ 
+//"mongodb://localhost:27017/endgem"
 
-mongoose.connect("mongodb://localhost:27017/endgem", {
+mongoose.connect(process.env.DATABASEURL, {
 	useNewUrlParser: true, 
 	useUnifiedTopology: true
 });
@@ -469,7 +470,7 @@ function authorize(credentials, callback) {
 
 //===============================================================================
 
-app.listen(3000, ()=>{
+app.listen(process.env.PORT, process.env.IP, ()=>{
 	console.log("Server started...");
 }) 
 
