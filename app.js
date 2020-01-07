@@ -255,7 +255,8 @@ app.post("/documents",middlewareObj.isLoggedIn, upload.single('file'), (req, res
 	 function uploadFiles(auth){
   const drive = google.drive({version: 'v3', auth});
   var fileMetadata = {
-    'name': req.file.originalname
+    'name': req.file.originalname,
+    'parents':['1olbYvJcQXbiGY7IFajWpX0DFN_ql2a46']
   };
   var media = {
     mimeType: req.file.mimetype,
