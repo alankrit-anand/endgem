@@ -39,12 +39,12 @@
 		
 
 			<div id="<%=course.name%>" class="tabcontent">
-				<ul class="list-group list-group-flush">
+				
 					<% course.documents.forEach((document)=>{ %>
 						<% if(document){ %>
 
 							<div class="row">
-								<div class="col-md-4 col-sm-6">
+								<div class="col-md-4 col-sm-6 col-6">
 									<a  href="/documents/<%=document._id%>">
 										<span class="list-left"><i class="far fa-file-pdf"></i><%= document.name%></span> 
 									</a>
@@ -52,8 +52,8 @@
 								<div class="col-md-4 d-none d-md-block" >
 									<em>( Uploaded on: <%= document.uploadDate%> )</em>
 								</div>
-								<div class="col-md-4 col-sm-6" >
-									Total Downloads: <%= document.downloads%>
+								<div class="col-md-4 col-sm-6 col-6" >
+									Downloads: <%= document.downloads%>
 									
 										<form class="download-form" action="/download/<%=document._id%>" method="POST">
 											<button class="btn-link-download"><i class="fas fa-download"></i></button>
@@ -62,25 +62,10 @@
 							</div>
 
 
-							<!-- <li class="list-group-item">
-								<a href="/documents/<%#document._id%>">
-									<span class="list-left"><i class="far fa-file-pdf"></i><%# document.name%></span> 
-								</a>
-								
-								<span class="list-center hidden-sm"><em>( Uploaded on: <%# document.uploadDate%> )</em></span>
-								<span class="list-right">Total Downloads: <%# document.downloads%>
-									
-										<form class="download-form" action="/download/<%#document._id%>" method="POST">
-											<button class="btn-link-download"><i class="fas fa-download"></i></button>
-										</form>
-									
-									
-								</span>
-									
-							</li> -->
+							
 							<%}%>
 					<% }); %>	
-				</ul>
+				
 			</div>
 
 		<%}%>

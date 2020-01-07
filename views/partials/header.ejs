@@ -14,8 +14,8 @@
 <body>
 
 	<%function nameGenerator(document){
-		 if(document.name.length>20){ 
-			 var doc_name = document.name.substring(0,20) ;
+		 if(document.name.length>15){ 
+			 var doc_name = document.name.substring(0,15) ;
 		} 
 		else{
 			var doc_name = document.name 
@@ -96,7 +96,7 @@
 
 
 					<div class="row">
-								<div class="col-md-4 col-sm-6">
+								<div class="col-md-4 col-sm-6 col-6">
 									<a id="top-gem-a" href="/documents/<%=document._id%>">
 										<span class="list-left"><i class="far fa-file-pdf"></i><%= document.name%></span> 
 									</a>
@@ -104,7 +104,7 @@
 								<div class="col-md-4 d-none d-md-block" >
 									<em>Course: <%=document.course%></em>
 								</div>
-								<div class="col-md-4 col-sm-6" >
+								<div class="col-md-4 col-sm-6 col-6" >
 									<form class="download-form" action="/download/<%=document._id%>" method="POST">
 										<button class="btn-link-download"><i class="fas fa-download"></i></a></span></button>
 									</form>
