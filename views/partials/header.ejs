@@ -13,15 +13,7 @@
 
 <body>
 
-	<%function nameGenerator(document){
-		 if(document.name.length>15){ 
-			 var doc_name = document.name.substring(0,15) ;
-		} 
-		else{
-			var doc_name = document.name 
-		}
-		return doc_name;
-	}%>
+
 
 	<%if(!i) var i =0%>
 
@@ -98,7 +90,7 @@
 					<div class="row">
 								<div class="col-md-4 col-sm-6 col-6">
 									<a id="top-gem-a" href="/documents/<%=document._id%>">
-										<span class="list-left"><i class="far fa-file-pdf"></i><%= document.name%></span> 
+										<span class="list-left"><i class="far fa-file-pdf"></i><%= document.name.substring(0,15)%></span> 
 									</a>
 								</div>
 								<div class="col-md-4 d-none d-md-block" >
