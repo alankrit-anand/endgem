@@ -16,7 +16,7 @@ Instructions:
   
   4. The plus-icon can be used to add new contents to a course. You need to be logged in to do it.
   
-  5. Sign up with google and fb hasn't been made yet. Site's own signup and login system implementing Mongoose-local can
+  5. Sign up with google and fb hasn't been made yet. Site's own signup and login system implementing passport-local can
      be used.
      
   6. The download button behaves strangely in mobiles that justs open the file in Google drive instead of downloading it.
@@ -26,7 +26,7 @@ Instructions:
   
   
   
-  About site back-end:
+  Website back-end:
   
     Platform: NodeJs
     
@@ -35,4 +35,15 @@ Instructions:
     Database: MongoDb
     
     Packages: See packages.json for more info...
+    
+    
+ Website front-end:
+
+    JQuery 
+ 
+    Bootstrap 4 : Used to design navbars, buttons, and other components.
+                  Also used to design grid system
+
+    Font-awesome: Used for icons
+
     
